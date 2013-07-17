@@ -19,5 +19,7 @@ end
 # e.g., /q6bda
 get '/:short_url' do
   @url = Url.find_by_short(params[:short_url])
-  @url.update
+  new_click_count = @url.click_count + 1
+  Url.update(@url.id, click_count: new_click_count)
+  redirect "#{@url.long}"
 end
