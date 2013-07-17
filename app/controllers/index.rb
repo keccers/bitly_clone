@@ -1,7 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
   # @errors = errors[:attribute] ||= ""
-  # puts request.inspect
   erb :index
 end
 
@@ -21,5 +20,9 @@ get '/:short_url' do
   @url = Url.find_by_short(params[:short_url])
   new_click_count = @url.click_count + 1
   Url.update(@url.id, click_count: new_click_count)
-  redirect "#{@url.long}"
+  if @url.long.include?('http://') || @url.long.include?('https://')
+    redirect "#{@url.long}/"
+  else
+    redirect "http://#{@url.long}/"
+  end
 end

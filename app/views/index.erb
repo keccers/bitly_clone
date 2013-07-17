@@ -1,6 +1,7 @@
 <div class="container">
 <% if @message %>
-  <h2>Success! Shorty is a ten! Access her here: http://<%= request.host %>/<%= @message %></h2>
+  <h2>Success! Shorty is a ten! Access her here: http:///<%= @message %></h2>
+<!--   <%= #Request.env['HTTP_HOST'] %> -->
 <% end %>
 <form action="/urls" method="post">
   <label for="url-input">URL:</label>
