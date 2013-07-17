@@ -18,5 +18,6 @@ end
 
 # e.g., /q6bda
 get '/:short_url' do
-  # redirect to appropriate "long" URL
+  @url = Url.find_by_short(params[:short_url])
+  @url.update
 end
