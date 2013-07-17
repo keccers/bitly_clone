@@ -1,4 +1,7 @@
 <div class="container">
+<% if @message %>
+  <h2>Success! Shorty is a ten! Access her here: http://<%= ENV['HTTP_HOST'] %>/<%= @message %></h2>
+<% end %>
 <form action="/urls" method="post">
   <label for="url-input">URL:</label>
   <br/>
